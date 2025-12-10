@@ -1,22 +1,64 @@
-def twoSumLoops(ints, target):
-    for i in range(len(ints)):
-        for j in range(i+1, len(ints)):
-            if ints[i] + ints[j] == target:
-                return i, j
+"""
+Ryan Huckaby
+Lab #11 (Week Fifteen)
+Date Started: 12/3/2025
+Description: Multiple ways to find the indicies of two numbers that add up to the target.
+"""
 
-def TwoSumDict():
-    return
+#CITATION - URL: https://interviewing.io/questions/two-sum
+#CITATION - Author: Tom Wagner and Dominic Platt
+#CITATION - Date Accessed: 12/3/2025
 
-def twoSumLoopsAll():
-    return
+def twoSumLoops(nums, target):
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == target - nums[j]:
+                return [i, j]
+    return None
 
-def TwoSumDictAll():
-    return
+
+def twoSumDict(nums, target):
+    seen = {}
+    for i in range(len(nums)):
+        needed = target - nums[i]
+        if needed in seen:
+            return [seen[needed], i]
+        seen[nums[i]] = i
+    return None
+
+
+def twoSumLoopsAll(nums, target):
+    result = []
+    for i in range(len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] + nums[j] == target:
+                result.append([i, j])
+    return result
+
+
+def twoSumDictAll(nums, target):
+    seen = {}
+    result = []
+    for i in range(len(nums)):
+        needed = target - nums[i]
+        if needed in seen:
+            for index in seen[needed]:
+                result.append([index, i])
+        if nums[i] not in seen:
+            seen[nums[i]] = []
+        seen[nums[i]].append(i)
+    return result
+
 
 def main():
-    ints = [1, 67, 98, 2, 8, 0]
-    target = 1
-    print(twoSumLoops(ints, target))
+    nums = [2, 7, 11, 15, 7]
+    target = 9
 
-if __name__ == "__main__": 
+    print(twoSumLoops(nums, target))
+    print(twoSumDict(nums, target))
+    print(twoSumLoopsAll(nums, target))
+    print(twoSumDictAll(nums, target))
+
+
+if __name__ == "__main__":
     main()
