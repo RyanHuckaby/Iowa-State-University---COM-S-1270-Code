@@ -1,8 +1,8 @@
 """
 Ryan Huckaby
-Lab #10 (Week Twelve)
+Lab #10 (Week Thirteen)
 Date Started: 11/19/2025
-Description:
+Description: A game that lets you punch a chimp...
 """
 
 # Import Modules
